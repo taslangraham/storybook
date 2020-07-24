@@ -1,5 +1,9 @@
 
 import Vue from "vue";
+import { Component, Prop, } from 'vue-property-decorator';
+import { Constructor } from 'vue/types/options';
+import { ComponentOptions, set, VueConstructor } from 'vue/types/umd';
+import { Func } from 'mocha';
 
 const storySafe = new WeakMap<object, { story: StoryOptions; props: StoryPropStore }>();
 let props: StoryPropStore = {};
@@ -85,13 +89,12 @@ StoryProp.getValues = function <V extends object>(target: V, propName: string) {
 
 
 
-// export function StoryComponent(story: StoryOptions, componentOptions: ComponentOptions<PropsDefinition>) {
-//   const storyDec = Story(story);
-//   const compDec = Component
+export function StoryComponent(story: StoryOptions, compDetails: ComponentOptions<Vue>) {
+  const compDecor = Component(compDetails)
+  const storyDec = Story(story);
 
-//   return function (target: VueConstructor) {
-//     storyDec(target);
-//     compDec(componentOptions);
-//   }
+  return function (target: VueConstructor<Vue>) {
+    return storyDec(compDecor(target))
+  }
 
-// }
+}

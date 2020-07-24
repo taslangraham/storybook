@@ -1,19 +1,21 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Story, StoryProp, } from '@/modules/story';
+import { Story, StoryProp, StoryComponent } from '@/modules/story';
 import { DEFAULT_MODULE } from '@/modules/constants';
 
 
-@Story({
+@StoryComponent({
   module: DEFAULT_MODULE,
-  description: 'Tester States'
-})
+  description: 'Tester States',
+  api: true,
+  playground: true
+},
+  {
+    components: {
+    },
+    name: 'tester',
+  })
 
 
-@Component({
-  components: {
-  },
-  name: 'tester',
-})
 class Tester extends Vue {
   // --------------------------------------------------------------------------
   // [Private] Fields
@@ -48,10 +50,11 @@ class Tester extends Vue {
   // --------------------------------------------------------------------------
   @StoryProp({
     description: '',
-    values: []
+    values: ['Card Title', 'New Levels']
   })
 
-  @Prop({})
+  @Prop({ type: String, default: '' }) private text!: string;
+
 
 
   // --------------------------------------------------------------------------
