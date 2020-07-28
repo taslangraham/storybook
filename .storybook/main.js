@@ -3,8 +3,8 @@ const path = require('path');
 
 module.exports = {
   stories: [
-    '../src/components/**/*.stories.(ts)',
-    '../src/pages/**/*.stories.(ts)'
+    '../src/**/*.stories.(ts)',
+    // '../src/pages/**/*.stories.(ts)'
   ],
   addons: [
     '@storybook/preset-scss',

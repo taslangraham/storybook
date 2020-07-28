@@ -1,25 +1,26 @@
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue } from 'vue-property-decorator';
 import { StoryComponent } from '../../modules/story';
 import { DEFAULT_MODULE } from '../../modules/constants';
 
-// @Component({
-//   components: {},
-//   name: 'hello-world',
-// })
 
 @StoryComponent(
+
   {
     module: DEFAULT_MODULE,
-    description: 'Hello World',
-    api: false,
-
+    description: 'July States',
+    api: true,
+    playground: true
   },
+
+
   {
     components: {
     },
-    name: 'hello-world',
+    name: 'july',
   })
-class HelloWorld extends Vue {
+
+
+class July extends Vue {
   // --------------------------------------------------------------------------
   // [Private] Fields
   // --------------------------------------------------------------------------
@@ -54,10 +55,11 @@ class HelloWorld extends Vue {
 
   private mounted() {
     // TODO: stuff to do when this component loads.
+
   }
 }
 
 export {
-  HelloWorld as default,
-  HelloWorld,
+  July as default,
+  July,
 };
