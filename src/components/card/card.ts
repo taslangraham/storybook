@@ -1,25 +1,36 @@
-import { Vue, Component } from 'vue-property-decorator';
-import { StoryComponent } from '../../modules/story';
-import { DEFAULT_MODULE } from '../../modules/constants';
+import { Prop, Vue} from 'vue-property-decorator';
+import { StoryComponent, StoryProp } from '@/modules/story';
+import { DEFAULT_MODULE } from '@/modules/constants';
 
-// @Component({
-//   components: {},
-//   name: 'hello-world',
-// })
 
 @StoryComponent(
+
   {
     module: DEFAULT_MODULE,
-    description: 'Hello World',
-    api: false,
-
+    description: 'Card States',
+    api: true,
+    playground: true
   },
+
   {
-    components: {
-    },
-    name: 'hello-world',
+    components: {},
+    name: 'card',
   })
-class HelloWorld extends Vue {
+
+// @Story({
+//   module: DEFAULT_MODULE,
+//   description: 'Card States'
+// })
+
+
+// @Component({
+//   components: {
+//   },
+//   name: 'card',
+// })
+
+
+class Card extends Vue {
   // --------------------------------------------------------------------------
   // [Private] Fields
   // --------------------------------------------------------------------------
@@ -49,15 +60,29 @@ class HelloWorld extends Vue {
   // --------------------------------------------------------------------------
 
   // --------------------------------------------------------------------------
+  // Props
+  // --------------------------------------------------------------------------
+  @StoryProp({
+    description: '',
+    values: []
+  })
+
+  @Prop({})
+
+
+  // --------------------------------------------------------------------------
   // [Private] Lifecycle Hooks
   // --------------------------------------------------------------------------
 
+
+
   private mounted() {
     // TODO: stuff to do when this component loads.
+
   }
 }
 
 export {
-  HelloWorld as default,
-  HelloWorld,
+  Card as default,
+  Card,
 };

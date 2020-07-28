@@ -1,14 +1,18 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Story, StoryProp, StoryComponent } from '@/modules/story';
+import { Prop, Vue } from 'vue-property-decorator';
+import { StoryProp, StoryComponent } from '@/modules/story';
 import { DEFAULT_MODULE } from '@/modules/constants';
 
 
-@StoryComponent({
-  module: DEFAULT_MODULE,
-  description: 'Tester States',
-  api: true,
-  playground: true
-},
+@StoryComponent(
+
+  {
+    module: DEFAULT_MODULE,
+    description: 'Tester States',
+    api: true,
+    playground: true
+  },
+
+
   {
     components: {
     },
@@ -50,7 +54,8 @@ class Tester extends Vue {
   // --------------------------------------------------------------------------
   @StoryProp({
     description: '',
-    values: ['Card Title', 'New Levels']
+    values: ['Card Title', 'New Levels'],
+
   })
 
   @Prop({ type: String, default: '' }) private text!: string;
